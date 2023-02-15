@@ -57,43 +57,7 @@
     </div>
   </div>
 
-  <script>
-    const email = document.getElementById('email');
-    email.addEventListener('input', () => validate(email));
 
-    const submit = document.getElementById('submit');
-    submit.addEventListener('click', () => validate(email));
-
-    function validate(element){
-      if (element.validity.typeMismatch){
-        element.setCustomValidity("The mail is not in the right format!!!");
-        element.reportValidity();
-      } else{
-        element.setCustomValidity('');
-      }
-    }
-
-
-    const dateInput = document.getElementById("dob"); //replace "date-input" with the actual id of your input field
-
-    dateInput.addEventListener("change", () => {
-      const birthDate = new Date(dateInput.value);
-      const age = calculateAge(birthDate);
-      if (age < 18 || age > 55) {
-        dateInput.setCustomValidity("You must be between 18 and 55 years old.");
-      } else {
-        dateInput.setCustomValidity("");
-      }
-    });
-
-    function calculateAge(birthDate) {
-      const today = new Date();
-      const diff = today - birthDate;
-      const age = Math.floor(diff / 31557600000); //convert milliseconds to years
-      return age;
-    }
-
-  </script>
   <script src="./index.js"></script>
 
 </body>
