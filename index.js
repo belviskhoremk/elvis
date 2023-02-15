@@ -1,7 +1,8 @@
-let Form=document.getElementById("user-form");
+//To store and extract data on and from localStorage.
+let Form=document.getElementById("userForm");
 
 const retrieveEntries=() =>{
-let entries=localStorage.getItem("user-entries");
+let entries=localStorage.getItem("inserted_data");
 if(entries) {
     entries=JSON.parse(entries);
 } else{
@@ -19,8 +20,8 @@ const displayEntries=()=>{
         const namePlace=`<td class='border px-4 py-2'>${entry.name} </td>`;
         const emailPlace=`<td class='border px-4 py-2'>${entry.email} </td>`;
         const passwordPlace=`<td class='border px-4 py-2'>${entry.password} </td>`;
-        const dobPlace=`<td class='border px-4 py-2'>${entry.dob} </td>`;
-        const acceptTermPlace=`<td class='border px-4 py-2'>${entry.acceptTerms} </td>`;
+        const dobPlace=`<td class='border px-4 py-2'>${entry.dateOfBirth} </td>`;
+        const acceptTermPlace=`<td class='border px-4 py-2'>${entry.termsAndConditions} </td>`;
   const row=`<tr>${namePlace} ${emailPlace} ${passwordPlace} ${dobPlace} ${acceptTermPlace}</tr>`;
   return row;
 
@@ -34,7 +35,7 @@ const displayEntries=()=>{
     <th class="px-4 py-2">Accepted terms?</th>
     </tr>${tableEntries}</table>`;
 
-    let details=document.getElementById("user-entries");
+    let details=document.getElementById("inserted_data");
     details.innerHTML=table;
 
 };
@@ -62,7 +63,7 @@ displayEntries();
 localStorage.clear();
 
 
-
+//To check if the age is between 18 and 55.
 const input = document.querySelector("#dob");
         input.addEventListener("input", function() {
           const now = new Date();
